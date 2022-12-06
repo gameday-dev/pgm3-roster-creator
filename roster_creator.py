@@ -12,7 +12,7 @@ class Player:
         self.forename = firstName
         self.surname = lastName
         self.age = default_rating 
-        self.iden = str(random.randint(1, 1000000))
+        self.iden = "5A251D07-3C9D-4BD1-B511-FD20CA81227C" #str(random.randint(1, 1000000))
         self.position = default_rating 
         self.appearance	= generateRandomAppearance() # PGM specific
         self.draftNum = random.randint(1, 224) # TODO: PGM specific
@@ -221,7 +221,7 @@ def createUpdatedRoster():
     for team_page in team_pages:
         team_name = " ".join(team_page.split("/")[-1].split("-")).title()
         # DEBUG PURPOSES
-        if "Arizona" not in team_name and "Agency" not in team_name:
+        if "Arizona" not in team_name: # and "Agency" not in team_name:
             continue
 
         print(f"TEAM: {team_name} ({temp_count} / 33)")
