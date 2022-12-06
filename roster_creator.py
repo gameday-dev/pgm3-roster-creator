@@ -21,14 +21,14 @@ class Player:
         self.draftSeason = random.randint(2012, 2020) # random generated as backup if we can't find the real year
 
         # overall ratings
-        self.rating	= default_rating 
-        self.potential = random.randint(1,15) # TODO: PGM specific
+        self.rating	= 1 # default_rating 
+        self.potential = random.randint(2,15) # TODO: PGM specific
         self.growthType	= 1 # PGM specific - development trait
 
         # contract 
-        self.salary	= 0 # game will set automatically
+        self.salary	= 50000 # game will set automatically
         self.length	= random.randint(1,4) # TODO: get contract info
-        self.guarantee = 1
+        self.guarantee = 25000
 
         # contract extension settings
         self.eGuarantee	= 1
@@ -146,7 +146,7 @@ def generateRandomAppearance():
       "Hair3Brown",
       "Beard2Brown"
     ]
-    
+
     hair_colors = ["Blonde", "Ginger", "Brown", "Black", "Grey", "White"]
 
     return ["Head" + str(random.randint(1,5)), 
