@@ -17,7 +17,7 @@ class Player:
         self.appearance	= generateRandomAppearance() # PGM specific
         self.draftNum = random.randint(1, 224) # TODO: PGM specific
         self.teamID = "" 
-        self.teamNum = [10, 20] # TEST
+        # self.teamNum = 10 # TEST
         self.draftSeason = random.randint(2012, 2020) # random generated as backup if we can't find the real year
 
         # overall ratings
