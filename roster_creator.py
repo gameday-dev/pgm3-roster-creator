@@ -16,7 +16,8 @@ class Player:
         self.position = default_rating 
         self.appearance	= generateRandomAppearance() # PGM specific
         self.draftNum = random.randint(1, 224) # TODO: PGM specific
-        self.teamNum = "" 
+        self.teamID = "" 
+        self.teamNum = 10 # TEST
         self.draftSeason = random.randint(2012, 2020) # random generated as backup if we can't find the real year
 
         # overall ratings
@@ -165,7 +166,7 @@ def generatePlayerFromURL(player_name, player_url):
         # set team
         if "Team" in attr_split[0]:
             team_name = " ".join(attr_split[1:])
-            new_player.teamNum = NFL_ABBREV[team_name]
+            new_player.teamID = NFL_ABBREV[team_name]
         # set position and age
         elif "Position" in attr_split[0]:
             new_player.position = attr_split[1]
@@ -240,7 +241,7 @@ def createUpdatedRoster():
             if team_name == "Free Agency":
                 player_name_split = player_name.split(" ", 1)
                 player_model = Player(firstName=player_name_split[0], lastName=player_name_split[1], default_rating=random.randint(60, 80))
-                player_model.teamNum = "Free Agency"
+                player_model.teamID = "Free Agency"
             else:
                 player_model = generatePlayerFromURL(player_name, player_url)
             final_roster.append(vars(player_model))
