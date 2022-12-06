@@ -139,6 +139,14 @@ def populateAbbrevDict():
 
 # roster creation functions
 def generateRandomAppearance():
+
+    return [
+      "Head3",
+      "Eyes3",
+      "Hair3Brown",
+      "Beard2Brown"
+    ]
+    
     hair_colors = ["Blonde", "Ginger", "Brown", "Black", "Grey", "White"]
 
     return ["Head" + str(random.randint(1,5)), 
