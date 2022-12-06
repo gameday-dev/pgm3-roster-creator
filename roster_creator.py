@@ -16,8 +16,8 @@ class Player:
         self.position = default_rating 
         self.appearance	= generateRandomAppearance() # PGM specific
         self.draftNum = random.randint(1, 224) # TODO: PGM specific
-        self.teamID	= default_rating 
-        self.draftSeason = random.randint(2012, 2022) # random generated as backup if we can't find the real year
+        self.teamNum = "" 
+        self.draftSeason = random.randint(2012, 2020) # random generated as backup if we can't find the real year
 
         # overall ratings
         self.rating	= default_rating 
@@ -147,7 +147,7 @@ def generateRandomAppearance():
         ]
 
 # create player from maddenratings.com url
-def generatePlayerFromURL(player_name, player_url, team_page):
+def generatePlayerFromURL(player_name, player_url):
     player_name_split = player_name.split(" ", 1) 
     new_player = Player(firstName=player_name_split[0], lastName=player_name_split[1])
     player_soup = BeautifulSoup(requests.get(player_url).text, "html.parser")
@@ -165,7 +165,7 @@ def generatePlayerFromURL(player_name, player_url, team_page):
         # set team
         if "Team" in attr_split[0]:
             team_name = " ".join(attr_split[1:])
-            new_player.teamID = NFL_ABBREV[team_name]
+            new_player.teamNum = NFL_ABBREV[team_name]
         # set position and age
         elif "Position" in attr_split[0]:
             new_player.position = attr_split[1]
@@ -208,7 +208,7 @@ def createUpdatedRoster():
     populateAbbrevDict()
     
     # open final file to write to
-    jsonFile = open("roster.json", "a+")
+    jsonFile = open("roster.json", "w")
 
     # get all team URLs from MaddenRatings first
     MAIN_PAGE = "https://www.maddenratings.com/"
@@ -219,6 +219,10 @@ def createUpdatedRoster():
     # for each team URL, get players
     for team_page in team_pages:
         team_name = " ".join(team_page.split("/")[-1].split("-")).title()
+        # DEBUG PURPOSES
+        if "Arizona" not in team_name and "Agency" not in team_name:
+            continue
+
         print(f"TEAM: {team_name} ({temp_count} / 33)")
         if team_name == "Free Agency":
             team_page = "https://maddenratings.com" + team_page
@@ -236,8 +240,9 @@ def createUpdatedRoster():
             if team_name == "Free Agency":
                 player_name_split = player_name.split(" ", 1)
                 player_model = Player(firstName=player_name_split[0], lastName=player_name_split[1], default_rating=random.randint(60, 80))
+                player_model.teamNum = "Free Agency"
             else:
-                player_model = generatePlayerFromURL(player_name, player_url, team_page)
+                player_model = generatePlayerFromURL(player_name, player_url)
             final_roster.append(vars(player_model))
         temp_count += 1
         
