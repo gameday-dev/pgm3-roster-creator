@@ -12,9 +12,8 @@ class Player:
         # player attributes
         self.forename = firstName
         self.surname = lastName
-        self.age = default_rating
-        # str(random.randint(1, 1000000))
-        self.iden = "5A251D07-3C9D-4BD1-B511-FD20CA81227C"
+        self.age = default_rating 
+        self.iden = str(random.randint(1, 1000000)) # "5A251D07-3C9D-4BD1-B511-FD20CA81227C"
         self.position = default_rating
         self.appearance = generateRandomAppearance()  # PGM specific
         self.draftNum = random.randint(1, 224)  # TODO: PGM specific
@@ -66,9 +65,9 @@ class Player:
         self.guarantee = 8350000
 
         # contract extension settings
-        self.eGuarantee = 1
+        self.eGuarantee = 10300000
         self.eLength = 1
-        self.eSalary = 1
+        self.eSalary = 14300000
 
         # passing attributes
         self.throwOnRun = default_rating
@@ -183,16 +182,16 @@ def populateAbbrevDict():
 def generateRandomAppearance():
 
     return [
-        "Head3",
-        "Eyes3",
-        "Hair3Brown",
-        "Beard2Brown",
-        "Eyebrows5b",
-        "Nose1b",
-        "Mouth1b",
+        "Head5b",
+        "Eyes1c",
+        "Hair1d",
+        "Beard1g",
+        "Eyebrows1a",
+        "Nose5a",
+        "Mouth5a",
         "Glasses1e",
         "Clothes2"
-    ]
+    ],
 
     hair_colors = ["Blonde", "Ginger", "Brown", "Black", "Grey", "White"]
 
