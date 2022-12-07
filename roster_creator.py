@@ -13,7 +13,7 @@ class Player:
         self.forename = firstName
         self.surname = lastName
         self.age = default_rating 
-        self.iden = str(random.randint(1, 1000000)) # "5A251D07-3C9D-4BD1-B511-FD20CA81227C"
+        self.iden = "5A251D07-3C9D-4BD1-B511-FD20CA81227C" # str(random.randint(1, 1000000)) 
         self.position = default_rating
         self.appearance = generateRandomAppearance()  # PGM specific
         self.draftNum = random.randint(1, 224)  # TODO: PGM specific
@@ -191,7 +191,7 @@ def generateRandomAppearance():
         "Mouth5a",
         "Glasses1e",
         "Clothes2"
-    ],
+    ]
 
     hair_colors = ["Blonde", "Ginger", "Brown", "Black", "Grey", "White"]
 
